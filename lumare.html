@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumarei Café ☕</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(180deg, #020403 0%, #041a0f 50%, #000000 100%);
+    color: #eafff2;
+}
+
+.hero {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(0,255,140,0.08), transparent 40%),
+        radial-gradient(circle at 70% 80%, rgba(0,255,140,0.06), transparent 50%),
+        linear-gradient(180deg, #020403 0%, #031a10 40%, #000000 100%);
+    z-index: -1;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: url('https://www.transparenttextures.com/patterns/noise.png');
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+}
+
+header {
+    text-align: center;
+    padding: 60px 20px 20px;
+    font-size: 2.4em;
+    letter-spacing: 1px;
+    color: #c8ffe0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.btn {
+    background: linear-gradient(135deg, rgba(0,255,140,0.15), rgba(0,255,140,0.05));
+    border: 1px solid rgba(0,255,140,0.25);
+    padding: 12px 20px;
+    border-radius: 12px;
+    color: #c8ffe0;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn span {
+    margin-right: 8px;
+}
+
+.btn::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    background: rgba(255,255,255,0.4);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.btn:hover {
+    transform: translateY(-2px) scale(1.03);
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--x,50%) var(--y,50%), rgba(0,255,140,0.3), transparent 60%);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.btn:hover::before {
+    opacity: 1;
+}
+
+.btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    border-color: rgba(0,255,140,0.5);
+}
+
+.btn:hover {
+    background: rgba(0,255,120,0.15);
+}
+
+.btn.active {
+    background: rgba(0,255,120,0.2);
+    border-color: #00ff88;
+}
+
+.section {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 25px;
+    background: rgba(0, 20, 10, 0.6);
+    border-radius: 16px;
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(0,255,120,0.1);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.socials {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.socials a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: 0.2s;
+}
+
+.youtube { background:#ff0000; color:white; }
+.twitch { background:#9146FF; color:white; }
+.tiktok { background:#000; color:white; }
+
+.socials a:hover { transform: translateY(-2px); }
+
+footer {
+    text-align: center;
+    opacity: 0.5;
+    margin-top: 40px;
+    padding-bottom: 20px;
+}
+
+.fade-in {
+    animation: fade 0.6s ease;
+}
+
+@keyframes fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+<style>
+/* flower cursor */
+body {
+    cursor: none;
+}
+.flower-cursor {
+    position: fixed;
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ff7edb, transparent 70%);
+    box-shadow: 0 0 10px #ff7edb, 0 0 20px #ff7edb;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+</style>
+<div class="flower-cursor" id="cursor"></div>
+<div class="hero"></div>
+
+<header>
+    Lumarei Café ☕
+</header>
+
+<nav>
+    <button class="btn active" onclick="showSection('home', this)">Home</button>
+    <button class="btn" onclick="showSection('socials', this)">Socials</button>
+    <button class="btn" onclick="showSection('support', this)">Support</button>
+</nav>
+
+<div id="home" class="section fade-in">
+    <h2>Welcome</h2>
+    <p>Relax and enjoy the atmosphere.</p>
+</div>
+
+<div id="socials" class="section" style="display:none;">
+    <div class="socials">
+        <a class="youtube" href="https://www.youtube.com/@Lumareii" target="_blank">YouTube</a>
+        <a class="twitch" href="https://www.twitch.tv/lumarei" target="_blank">Twitch</a>
+        <a class="tiktok" href="https://www.tiktok.com/@lumareiix" target="_blank">TikTok</a>
+    </div>
+</div>
+
+<div id="support" class="section" style="display:none;">
+    <a class="btn" href="https://discord.gg/7gjpVtWb7g" target="_blank">
+        <span>💬</span> Join Discord
+    </a>
+    <br><br>
+    <a class="btn" href="https://paypal.me/LumareiLuna" target="_blank">
+        <span>💸</span> Donate
+    </a>
+</div>
+
+<footer>
+    © 2026 Lumarei Café
+</footer>
+
+<script>
+// navigation
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+  const target = document.getElementById(id);
+  target.style.display = 'block';
+  target.classList.add('fade-in');
+  document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+}
+
+// flower cursor (fixed, no errors)
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  if(!cursor) return;
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+
+// button glow follow
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const rect = btn.getBoundingClientRect();
+    btn.style.setProperty('--x', (e.clientX - rect.left) + 'px');
+    btn.style.setProperty('--y', (e.clientY - rect.top) + 'px');
+  });
+});
+
+// subtle hover sound (safe)
+const hoverSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_4e6c6c57d3.mp3?filename=click-124467.mp3');
+hoverSound.volume = 0.08;
+document.querySelectorAll('button, a').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    try { hoverSound.currentTime = 0; hoverSound.play(); } catch(e){}
+  });
+});
+</script>
+
+</body>
+</html>
